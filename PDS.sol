@@ -37,13 +37,13 @@ contract PDS{
   
 
 
-  function  addPDS(string memory time, string memory _type,  string memory quality, string memory f_aadhar, string memory purist_aadhar, string memory weight, string memory location, string memory arrival) public {
+  function  addPDS(string memory time, string memory _type,  string memory quality, string memory f_aadhar, string memory purist_aadhar, string memory weight, string memory location, string memory arrival) public returns(strings) {
     PDScount++;
     bytes memory UIN = abi.encodePacked(time, convertingToString(f_aadhar));
     bytes memory qual = abi.encodePacked(quality, convertingToString(purist_aadhar));
     
     PDSdatas[PDScount] = PDSdata(PDScount, UIN, _type, qual, weight, location, arrival);
-
+    return "123"
   }
 
   function printStatus(bytes memory UIN) public returns (bytes[] memory, string[] memory, bytes[] memory, string[] memory, string[] memory, string[] memory){
@@ -76,7 +76,7 @@ contract PDS{
         
 
       }
-      return (uins, _types, qualities, weights, locations, arrivals);
+      return ("123");
     }
   }
 

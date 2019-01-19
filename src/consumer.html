@@ -17,18 +17,19 @@
                <div id="content" style="display: block;">
                   <hr/>
                   <div id="consumer">
-                     <form onSubmit="/consumer">
+                     <form onsubmit="return false">
                         <div class="form-group">
                            <label for="f_aadhar">Farmer's Aadhar ID No.</label>
                            <input type="number" name="f_aadhar"  id="UIN" class="form-control">
-                           <label for="_type">Product Name</label>
+                           <!--<label for="_type">Product Name</label>
                            <input type="text" name="_type" id="_type" class="form-control">
                            <label for="weight">Weight (in Kgs)</label>
                            <input type="number" name="weight" class="form-control" id="weight" >
                            <label for="quality">Quality</label>
                            <input type="number" name="quality" id="quality" class="form-control">
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>-->
+                        <input type="submit" class="btn btn-primary" onclick="viewPDS()">
+                        <hr />
                         <hr />
                      </form>
                   </div>

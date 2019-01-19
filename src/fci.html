@@ -17,7 +17,7 @@
                <div id="content" style="display: block;">
                   <hr/>
                   <div id="fci">
-                     <form id="form" onSubmit="/addPDS">
+                     <form id="form" onsubmit="return false">
                         <div class="form-group">
                            <div class="col-lg-5">
                               <label for="f_aadhar">Farmer's Aadhar ID No.</label>
@@ -57,7 +57,7 @@
                               <br><br>
                            </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <input type="submit" class="btn btn-primary" onclick="addPDS()">
                         <hr />
                      </form>
                   </div>
