@@ -54,12 +54,12 @@ contract PDS{
   }
 
 
-  function warehouseUpdate(bytes memory UIN, string memory weight, string memory location, string memory arrival) public{
+  function warehouseUpdate(bytes memory UIN, bytes memory quality, string memory weight, string memory location, string memory arrival) public{
     for(uint i = 1; i<=PDScount;i++){
       if(keccak256(PDSdatas[i].UIN)==keccak256(UIN)){
         PDScount++;
         
-        PDSdatas[PDScount] = PDSdata(PDScount, UIN, PDSdatas[i]._type, PDSdatas[i].quality, weight, location, arrival);
+        PDSdatas[PDScount] = PDSdata(PDScount, UIN, PDSdatas[i]._type, quality, weight, location, arrival);
 
       }
     }
