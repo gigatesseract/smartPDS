@@ -59,10 +59,12 @@ function viewPDS(){
   }
 
 
-  console.log(bytesv2)
   Mycontract.deployed().then(function(instance){
-    number = instance.PDScount().getUint8() << 24 >> 24;
-    for (var i = 1; i < number; i++){
+    number = instance.PDScount().then(function(values){
+      return values.c[0];
+    })
+
+    for (var i = 1; i <= number; i++){
       instance.PDSdatas(i).then(function(pd){
       console.log(pd);
     });
