@@ -1,68 +1,24 @@
-App = {
-  web3Provider: null,
-  contracts: {},
+var express = require('express');
+var contracts = require('truffle-contract');
+var Web3 = require('web3')
+var contractJSON = require(path.join(__dirname, 'build/contracts/MyContract.json'))
+var app = express()
 
-  init: async function() {
-    // Load pets.
-    $.getJSON('../pets.json', function(data) {
-      var petsRow = $('#petsRow');
-      var petTemplate = $('#petTemplate');
+var web3Provider = new Web3.providers.HttpProvider('https://localhost:7545');
 
-      for (i = 0; i < data.length; i ++) {
-        petTemplate.find('.panel-title').text(data[i].name);
-        petTemplate.find('img').attr('src', data[i].picture);
-        petTemplate.find('.pet-breed').text(data[i].breed);
-        petTemplate.find('.pet-age').text(data[i].age);
-        petTemplate.find('.pet-location').text(data[i].location);
-        petTemplate.find('.btn-adopt').attr('data-id', data[i].id);
 
-        petsRow.append(petTemplate.html());
-      }
-    });
+var Mycontract = contract(contractJSON);
+Mycontract.setProvider(web3Provider);
 
-    return await App.initWeb3();
-  },
-
-  initWeb3: async function() {
-    /*
-     * Replace me...
-     */
-
-    return App.initContract();
-  },
-
-  initContract: function() {
-    /*
-     * Replace me...
-     */
-
-    return App.bindEvents();
-  },
-
-  bindEvents: function() {
-    $(document).on('click', '.btn-adopt', App.handleAdopt);
-  },
-
-  markAdopted: function(adopters, account) {
-    /*
-     * Replace me...
-     */
-  },
-
-  handleAdopt: function(event) {
-    event.preventDefault();
-
-    var petId = parseInt($(event.target).data('id'));
-
-    /*
-     * Replace me...
-     */
-  }
-
-};
-
-$(function() {
-  $(window).load(function() {
-    App.init();
+app.post('/addPDS',function(req,res){
+  uin = req.body.UIN;
+  _type = req.body._type;
+  weight = req.body.weight;
+  name = req.body.quality;
+  
+  Mycontract.deployed.then(function(instance){
+    instance.addPDS()
   });
 });
+
+
