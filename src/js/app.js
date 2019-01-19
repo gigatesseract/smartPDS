@@ -61,11 +61,12 @@ function viewPDS(){
 
   console.log(bytesv2)
   Mycontract.deployed().then(function(instance){
-    PDSdatas = instance.PDSdatas;
-    console.log("111", instance.PDScount())
-    for (var i = 0; i< PDSdatas.length; i++){
-      console.log(PDSdatas(i))
-    };
+    number = instance.PDScount().getUint8() << 24 >> 24;
+    for (var i = 1; i < number; i++){
+      instance.PDSdatas(i).then(function(pd){
+      console.log(pd);
+    });
+    }
   });
 }
 
