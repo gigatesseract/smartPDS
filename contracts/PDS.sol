@@ -22,7 +22,7 @@ contract PDS{
   uint public PDScount;
 
   constructor() public{
-    PDScount = 1;
+    PDScount = 0;
   }
 
   function convertingToString(string memory _a) public returns(string memory){
@@ -31,6 +31,7 @@ contract PDS{
     return converted;
   }
   
+
 
   function  addPDS(string memory _type,  string memory quality, string memory f_aadhar, string memory purist_aadhar, string memory weight, string memory location, string memory arrival) public {
     PDScount++;
@@ -50,6 +51,19 @@ contract PDS{
 
       }
     }
+  }
+
+
+  function warehouseUpdate(bytes memory UIN, string memory weight, string memory location, string memory arrival) public{
+    for(uint i = 1; i<=PDScount;i++){
+      if(keccak256(PDSdatas[i].UIN)==keccak256(UIN)){
+        PDScount++;
+        
+        PDSdatas[PDScount] = PDSdata(PDScount, UIN, PDSdatas[i]._type, PDSdatas[i].quality, weight, location, arrival);
+
+      }
+    }
+
   }
 }
 
