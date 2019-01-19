@@ -18,7 +18,7 @@ locationip = location()
 var data = $('#form').serializeArray().reduce(function(object,item){
 	object[item.name] = item.value;
 },{});
-
+data.ip = locationip;
 $.ajax({
 	url:"http://localhost:3000",
 	data:JSON.stringify(data)
