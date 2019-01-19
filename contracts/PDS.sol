@@ -7,9 +7,9 @@ contract PDS{
 
   struct PDSdata{
     uint id;
-    uint UIN;
+    bytes UIN;
     string _type;
-    string quality;
+    bytes quality;
     string weight;
     string location;
     string arrival;
@@ -19,12 +19,12 @@ contract PDS{
   mapping(uint => PDSdata) public PDSdatas;
   uint public PDScount;
 
-  function  addPDS(string memory _type,  string memory quality, string memory f_aadhar, string memory purist_aadhar, string memory weight, string memory location, string memory arrival) public {
+  function  addPDS(string memory _type,  string memory quality, string memory f_aadhar, string  purist_aadhar, string memory weight, string memory location, string memory arrival) public {
     PDScount++;
-    uint UIN = keccak256(f_aadhar);
-    uint quality = quality + keccack256(purist_aadhar);
+    bytes memory UIN = abi.encodePacked(f_aadhar);
+    bytes memory qual = abi.encodePacked(quality, string(keccak256(purist_aadhar)));
     
-    PDSdatas[PDScount] = PDSdata(PDScount, UIN, _type, quality, weight, location, arrival);
+    PDSdatas[PDScount] = PDSdata(PDScount, UIN, _type, qual, weight, location, arrival);
 
   }
 }
