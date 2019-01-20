@@ -18,12 +18,7 @@ $.getJSON("PDS.json", function(pds) {
         $("#number").text(
           "There are " + number.toNumber() + " blocks in the blockchain"
         );
-      }
-      // $("#number").text(
-      //   "There are " +
-      //     toString(number.toNumber()) +
-      //     "blocks in the blockchain"
-    );
+      });
 });
 });
 
@@ -44,8 +39,6 @@ $.getJSON("https://jsonip.com/?callback=?", data => {
   console.log(locationip);
 });
 
-
-
 function addPDS() {
   uin = $("#f_aadhar").val();
   _type = $("#_type").val();
@@ -55,7 +48,7 @@ function addPDS() {
   q_aadhar = $("#q_aadhar").val();
   var date = new Date();
   var time = date.getTime();
-  time = time.toString();
+  time.toString();
   Mycontract.deployed().then(function(instance) {
     instance.addPDS(
       time,
@@ -79,7 +72,7 @@ function updateWarehouse() {
   quality = $("#quality").val();
   var date = new Date();
   var time = date.getTime();
-  time.toString();
+  time = time.toString();
   Mycontract.deployed().then(function(instance) {
     instance.warehouseUpdate(uin, quality, weight, locationip, time, {
       from: accountName
@@ -132,10 +125,12 @@ async function viewPDS() {
           no_of_blocks = number.toNumber();
           for (i = 1; i <= no_of_blocks; i++) {
             var pdsdata = await app.PDSdatas(i);
-            console.log(pdsdata);
             pdsdata[1] = hex_to_ascii(pdsdata[1]);
             pdsdata[3] = hex_to_ascii(pdsdata[3]);
-            if (pdsdata[1].valueOf() != uin.valueOf()) {
+            var date = new Date(parseInt(pdsdata[6], 10)).toUTCString();
+            pdsdata[6] = date;
+            console.log(pdsdata[1])
+            if (uin.localeCompare(pdsdata[1]) == 0) {
               pdsarray.push(pdsdata);
             }
           }
@@ -144,20 +139,5 @@ async function viewPDS() {
         });
     });
   });
-  // var bytes = []; // char codes
-  // var bytesv2 = []; // char codes
-
-  // for (var i = 0; i < str.length; ++i) {
-  //   var code = str.charCodeAt(i);
-
-  //   bytes = bytes.concat([code]);
-
-  //   bytesv2 = bytesv2.concat([code & 0xff, (code / 256) >>> 0]);
-  // }
+  
 }
-
-// for (var i = 1; i <= number; i++) {
-//   instance.PDSdatas(i).then(function(pd) {
-//     console.log(pd);
-//   });
-// }
