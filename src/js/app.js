@@ -40,12 +40,20 @@ function throwalert(string, string2) {
   if (string2 == "success")
     $("#alert")
       .removeClass("alert-danger")
+      .removeClass("alert-info")
       .addClass("alert-success")
       .show();
-  else {
+  else if (string2 == "danger") {
     $("#alert")
       .removeClass("alert-success")
+      .removeClass("alert-info")
       .addClass("alert-danger")
+      .show();
+  } else if (string2 == "primary") {
+    $("#alert")
+      .removeClass("alert-success")
+      .removeClass("alert-danger")
+      .addClass("alert-info")
       .show();
   }
   $("#alert-text").text(string);
@@ -113,10 +121,13 @@ async function updateWarehouse() {
         instance.warehouseUpdate(uin, quality, weight, locationip, time, {
           from: accountName
         });
-        throwalert("Successfully updated", "success");
+        throwalert(
+          "Transaction initiated. Accept the transaction to continue",
+          "primary"
+        );
       } else {
         throwalert(
-          "Unique Identification Number does not exist. The process was NOT successful",
+          "Unique Identification Number does not exist. The process failed",
           "danger"
         );
       }

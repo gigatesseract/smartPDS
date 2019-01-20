@@ -1,81 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Smart and Secure PDS</title>
-      <link href="css/bootstrap.min.css" rel="stylesheet">
-   </head>
-   <body>
-      <div class="container" style="width: 650px;">
-         <div class="row">
-            <div class="col-lg-12">
-               <h1 class="text-center">Smart and Secure PDS</h1>
-               <hr/>
-               <div id="content" style="display: block;">
-                  <div id="rationshop">
-                     <h3>Recieving products</h3><hr/>
-                     <form onsubmit="">
-                        <div class="form-group">
-                           <div class="col-lg-5">
-                              <label for="uin">UIN No.</label>
-                           </div>
-                           <div class="col-lg-7">
-                              <input type="text" name="uin"  id="uin" class="form-control"><br><br>
-                           </div>
-                           <div class="col-lg-5">
-                              <label for="UIN">Ration Shop Manager Aadhar ID </label>
-                           </div>
-                           <div class="col-lg-7">
-                              <input type="number" name="q_aadhar"  id="q_aadhar" class="form-control"><br><br>
-                           </div>
-                           <div class="col-lg-5">
-                              <label for="_type">Product Name</label>
-                           </div>
-                           <div class="col-lg-7">
-                              <input type="text" name="_type" id="_type" class="form-control"><br><br>
-                           </div>
-                           <div class="col-lg-5">
-                              <label for="weight">Weight (in Kgs)</label>
-                           </div>
-                           <div class="col-lg-7">
-                              <input type="number" name="weight" class="form-control"  id="weight"><br><br>
-                           </div>
-                           <div class="col-lg-5">
-                              <label for="quality">Quality</label>
-                           </div>
-                           <div class="col-lg-7">
-                              <select class="form-control" id="quality" name="quality">
-                                 <option>1</option>
-                                 <option>2</option>
-                                 <option>3</option>
-                                 <option>4</option>
-                                 <option>5</option>
-                              </select>
-                              <br><br>
-                           </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                        <hr />
-                     </form>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Smart and Secure PDS</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="container" style="width: 650px;">
+      <div class="row">
+        <div class="col-lg-12">
+          <h1 class="text-center">Smart and Secure PDS</h1>
+          <hr />
+          <div id="content" style="display: block;">
+            <div id="rationshop">
+              <div class="col-lg-2">
+                <a href="index.html"
+                  ><button class="btn btn-default">Back</button></a
+                >
+              </div>
+              <div class="col-lg-3"></div>
+              <div class="col-lg-3">
+                <a href="consumer.html" action="get"
+                  ><button class="btn btn-default">Scan Smart card</button></a
+                >
+              </div>
+              <div class="col-lg-2">
+                <a href="/" action="get">
+                  <button class="btn btn-default ">Send SMS</button></a
+                >
+              </div>
+              <div class="col-lg-2">
+                <a href="subscribe.html" action="get"
+                  ><button class="btn btn-default ">Subcribe to SMS</button></a
+                >
+              </div>
+
+              &nbsp;&nbsp;
+
+              <div><h3>Recieving products</h3></div>
+              <hr />
+              <form onsubmit="">
+                <div class="form-group">
+                  <div class="col-lg-5"><label for="uin">UIN No.</label></div>
+                  <div class="col-lg-7">
+                    <input
+                      type="text"
+                      name="uin"
+                      id="uin"
+                      class="form-control"
+                    /><br /><br />
                   </div>
-                  <div id="scan">
-                     <button class="btn btn-default"><a href="consumer.html" action="get">Scan Smart card</a></button><br><br>
+                  <div class="col-lg-5">
+                    <label for="UIN">Ration Shop Manager Aadhar ID </label>
                   </div>
-                  <div id="sms">
-                     <button class="btn btn-default "><a href="/" action="get">Send SMS</a></button> &nbsp;&nbsp;
-                     <button class="btn btn-default "><a href="subscribe.html" action="get">Subcribe to SMS</a></button><br><br>
-                    
+                  <div class="col-lg-7">
+                    <input
+                      type="number"
+                      name="q_aadhar"
+                      id="q_aadhar"
+                      class="form-control"
+                    /><br /><br />
                   </div>
-               </div>
+                  <div class="col-lg-5">
+                    <label for="_type">Product Name</label>
+                  </div>
+                  <div class="col-lg-7">
+                    <input
+                      type="text"
+                      name="_type"
+                      id="_type"
+                      class="form-control"
+                    /><br /><br />
+                  </div>
+                  <div class="col-lg-5">
+                    <label for="weight">Weight (in Kgs)</label>
+                  </div>
+                  <div class="col-lg-7">
+                    <input
+                      type="number"
+                      name="weight"
+                      class="form-control"
+                      id="weight"
+                    /><br /><br />
+                  </div>
+                  <div class="col-lg-5">
+                    <label for="quality">Quality</label>
+                  </div>
+                  <div class="col-lg-7">
+                    <select class="form-control" id="quality" name="quality">
+                      <option>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                    </select>
+                    <br /><br />
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <hr />
+              </form>
             </div>
-         </div>
+          </div>
+        </div>
       </div>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-      <script src="js/bootstrap.min.js"></script>
-      <script src="js/web3.min.js"></script>
-      <script src="js/truffle-contract.js"></script>
-      <script src="js/app.js"></script>
-   </body>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/web3.min.js"></script>
+    <script src="js/truffle-contract.js"></script>
+    <script src="js/app.js"></script>
+  </body>
 </html>
