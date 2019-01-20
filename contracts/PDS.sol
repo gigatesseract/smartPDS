@@ -46,35 +46,39 @@ contract PDS{
 
   }
 
-  function printStatus(bytes memory UIN) public returns (bytes[] memory, string[] memory, bytes[] memory, string[] memory, string[] memory, string[] memory) { 
-    // uint tempPDScount = 0;
+  // function printStatus(bytes memory UIN) public returns (bytes[] memory, string[] memory, bytes[] memory, string[] memory, string[] memory, string[] memory) { 
+  //   // uint tempPDScount = 0;
  
 
-    bytes[] memory uins = new bytes[](PDScount);
+  //   bytes[] memory uins = new bytes[](PDScount);
 
-    string[] memory _types = new string[](PDScount);
+  //   string[] memory _types = new string[](PDScount);
 
-    bytes[] memory qualities = new bytes[](PDScount);
+  //   string[] memory qualities = new string[](PDScount);
 
-    string[] memory weights = new string[](PDScount);
+  //   string[] memory weights = new string[](PDScount);
 
-    string[] memory locations = new string[](PDScount);
+  //   string[] memory locations = new string[](PDScount);
 
-    string[] memory arrivals = new string[](PDScount);
+  //   string[] memory arrivals = new string[](PDScount);
 
   
-    for(uint i = 1; i<=PDScount;i++){
-      if(keccak256(PDSdatas[i].UIN)==keccak256(UIN)){
-        uins[i] = PDSdatas[i].UIN;
-        _types[i] = PDSdatas[i]._type;
-        qualities[i] = PDSdatas[i].quality;
-        weights[i] = PDSdatas[i].weight;
-        locations[i] = PDSdatas[i].location;
-        arrivals[i] = PDSdatas[i].arrival; 
+  //   for(uint i = 1; i<=PDScount;i++){
+  //     if(compareStrings(PDSdatas[i].UIN, UIN)){
+  //       uins[i] = PDSdatas[i].UIN;
+  //       _types[i] = PDSdatas[i]._type;
+  //       qualities[i] = PDSdatas[i].quality;
+  //       weights[i] = PDSdatas[i].weight;
+  //       locations[i] = PDSdatas[i].location;
+  //       arrivals[i] = PDSdatas[i].arrival;
 
-      }
-    }
-  }
+        
+        
+
+  //     }
+  //     return (uins, _types, qualities, weights, locations, arrivals);
+  //   }
+  // }
 
   // function getUINsbykey() public {
   //   for(uint i=1;i<=PDScount;i++){
@@ -85,7 +89,7 @@ contract PDS{
   //   }
   // }
 
-
+  
   function warehouseUpdate(bytes memory UIN, bytes memory quality, string memory weight, string memory location, string memory arrival) public {
     for(uint i = 1; i<=PDScount;i++){
       if(keccak256(PDSdatas[i].UIN)==keccak256(UIN)){

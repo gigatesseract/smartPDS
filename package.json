@@ -22,6 +22,7 @@
     "ip-validator": "0.0.1",
     "iplocation": "^6.1.0",
     "request": "^2.88.0",
-    "truffle": "^5.0.2"
+    "truffle": "^5.0.2",
+    "twilio": "^3.27.1"
   }
 }
