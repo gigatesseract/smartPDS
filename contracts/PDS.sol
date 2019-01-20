@@ -7,9 +7,9 @@ contract PDS{
 
   struct PDSdata{
     uint id;
-    string UIN;
+    bytes UIN;
     string _type;
-    string quality;
+    bytes quality;
     string weight;
     string location;
     string arrival;
@@ -19,7 +19,7 @@ contract PDS{
   mapping(uint => PDSdata) public tempPDSdatas;
 
   mapping(uint => PDSdata) public PDSdatas;
-  uint256 public PDScount;
+  uint public PDScount;
 
   // mapping(bytes=>(mapping(uiint->PDSdata)public)) public PDSlist;
   uint public PDSlistcount; 
@@ -39,25 +39,18 @@ contract PDS{
 
   function  addPDS(string memory time, string memory _type,  string memory quality, string memory f_aadhar, string memory purist_aadhar, string memory weight, string memory location, string memory arrival) public {
     PDScount++;
-    // bytes memory UIN = abi.encodePacked(time, convertingToString(f_aadhar));
-    // bytes memory qual = abi.encodePacked(quality, convertingToString(purist_aadhar));
-    string memory UIN = "123";
-    string memory qual = "456";
+    bytes memory UIN = abi.encodePacked(time, convertingToString(f_aadhar));
+    bytes memory qual = abi.encodePacked(quality, convertingToString(purist_aadhar));
     
     PDSdatas[PDScount] = PDSdata(PDScount, UIN, _type, qual, weight, location, arrival);
 
   }
 
-
-  function compareStrings (string memory a, string memory b) public returns (bool){
-    return keccak256(abi.encode(a)) == keccak256(abi.encode(b));
-  }
-
-  // function printStatus(string memory UIN) public returns (string[] memory, string[] memory, string[] memory, string[] memory, string[] memory, string[] memory){
+  // function printStatus(bytes memory UIN) public returns (bytes[] memory, string[] memory, bytes[] memory, string[] memory, string[] memory, string[] memory) { 
   //   // uint tempPDScount = 0;
  
 
-  //   string[] memory uins = new string[](PDScount);
+  //   bytes[] memory uins = new bytes[](PDScount);
 
   //   string[] memory _types = new string[](PDScount);
 
@@ -96,18 +89,16 @@ contract PDS{
   //   }
   // }
 
-
-  function warehouseUpdate(string memory UIN, string memory quality, string memory weight, string memory location, string memory arrival) public{
+  
+  function warehouseUpdate(bytes memory UIN, bytes memory quality, string memory weight, string memory location, string memory arrival) public {
     for(uint i = 1; i<=PDScount;i++){
-      if(compareStrings(PDSdatas[i].UIN, UIN)){
+      if(keccak256(PDSdatas[i].UIN)==keccak256(UIN)){
         PDScount++;
         
         PDSdatas[PDScount] = PDSdata(PDScount, UIN, PDSdatas[i]._type, quality, weight, location, arrival);
-        break;
 
       }
     }
 
   }
 }
-
