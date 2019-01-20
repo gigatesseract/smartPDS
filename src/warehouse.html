@@ -1,65 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <title>Smart and Secure PDS</title>
-      <link href="css/bootstrap.min.css" rel="stylesheet">
-   </head>
-   <body>
-      <div class="container" style="width: 650px;">
-         <div class="row">
-            <div class="col-lg-12">
-               <h1 class="text-center">Smart and Secure PDS</h1>
-               <hr/>
-               <br/>
-               <div id="content" style="display: block;">
-                  <hr/>
-                  <div id="wh">
-                     <form onSubmit="/warehouse">
-                        <div class="form-group">
-                          <div class="col-lg-5">
-                              <label for="uin">UIN No.</label>
-                           </div>
-                           <div class="col-lg-7">
-                              <input type="text" name="uin"  id="uin" class="form-control"><br><br>
-                           </div>
-                           <div class="col-lg-5">
-                              <label for="q_aadhar">Quality Aadhar ID No.</label>
-                           </div>
-                           <div class="col-lg-7">
-                              <input type="number" name="q_aadhar"  id="q_aadhar" class="form-control"><br><br>
-                           </div>
-                           <div class="col-lg-5">
-                              <label for="_type">Product Name</label>
-                           </div>
-                           <div class="col-lg-7">
-                              <input type="text" name="_type" id="_type" class="form-control"><br><br>
-                           </div>
-                           <div class="col-lg-5">
-                              <label for="weight">Weight (in Kgs)</label>
-                           </div>
-                           <div class="col-lg-7">
-                              <input type="number" name="weight" class="form-control"  id="weight"><br><br>
-                           </div>
-                           <div class="col-lg-5">
-                              <label for="quality">Quality</label>
-                           </div>
-                           <div class="col-lg-7">
-                              <select class="form-control" id="quality" name="quality">
-                                 <option>1</option>
-                                 <option>2</option>
-                                 <option>3</option>
-                                 <option>4</option>
-                                 <option>5</option>
-                              </select>
-                              <br><br>
-                           </div>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                        <hr />
-                     </form>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Smart and Secure PDS</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/alert.css" />
+  </head>
+  <body>
+    <div class="container" style="width: 650px;">
+      <div class="row">
+        <div class="col-lg-12">
+          <h1 class="text-center">Smart and Secure PDS</h1>
+          <hr />
+          <div>
+            <div class="d-inline">
+              <a href="index.html"
+                ><button class="btn btn-default">Back</button></a
+              >
+            </div>
+            <h3 class="text-center d-inline">Welcome Warehouse manager</h3>
+          </div>
+
+          <br />
+          <div id="content" style="display: block;">
+            <hr />
+            <div id="fci">
+              <form onsubmit="return false">
+                <div class="form-group">
+                  <div class="col-lg-5">
+                    <label for="uin">Unique Identification No.</label>
                   </div>
                   <div class="col-lg-7">
                     <input
@@ -67,6 +38,7 @@
                       name="f_aadhar"
                       id="uin"
                       class="form-control"
+                      required
                     />
 
                     <br /><br />
@@ -80,6 +52,7 @@
                       name="q_aadhar"
                       id="q_aadhar"
                       class="form-control"
+                      required
                     /><br /><br />
                   </div>
                   <div class="col-lg-5">
@@ -91,6 +64,7 @@
                       name="_type"
                       id="_type"
                       class="form-control"
+                      required
                     /><br /><br />
                   </div>
                   <div class="col-lg-5">
@@ -102,6 +76,7 @@
                       name="weight"
                       class="form-control"
                       id="weight"
+                      required
                     /><br /><br />
                   </div>
                   <div class="col-lg-5">
@@ -133,7 +108,13 @@
         </div>
       </div>
     </div>
-    <div id="number"></div>
+    <div id="number" class="text-center"></div>
+    <div class="alert alert-dismissible" id="alert">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close"
+        >&times;</a
+      >
+      <strong id="alert-text"></strong>
+    </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

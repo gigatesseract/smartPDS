@@ -53,39 +53,39 @@ contract PDS{
     return keccak256(abi.encode(a)) == keccak256(abi.encode(b));
   }
 
-  function printStatus(string memory UIN) public returns (string[] memory, string[] memory, string[] memory, string[] memory, string[] memory, string[] memory){
-    // uint tempPDScount = 0;
+  // function printStatus(string memory UIN) public returns (string[] memory, string[] memory, string[] memory, string[] memory, string[] memory, string[] memory){
+  //   // uint tempPDScount = 0;
  
 
-    string[] memory uins = new string[](PDScount);
+  //   string[] memory uins = new string[](PDScount);
 
-    string[] memory _types = new string[](PDScount);
+  //   string[] memory _types = new string[](PDScount);
 
-    string[] memory qualities = new string[](PDScount);
+  //   string[] memory qualities = new string[](PDScount);
 
-    string[] memory weights = new string[](PDScount);
+  //   string[] memory weights = new string[](PDScount);
 
-    string[] memory locations = new string[](PDScount);
+  //   string[] memory locations = new string[](PDScount);
 
-    string[] memory arrivals = new string[](PDScount);
+  //   string[] memory arrivals = new string[](PDScount);
 
   
-    for(uint i = 1; i<=PDScount;i++){
-      if(compareStrings(PDSdatas[i].UIN, UIN)){
-        uins[i] = PDSdatas[i].UIN;
-        _types[i] = PDSdatas[i]._type;
-        qualities[i] = PDSdatas[i].quality;
-        weights[i] = PDSdatas[i].weight;
-        locations[i] = PDSdatas[i].location;
-        arrivals[i] = PDSdatas[i].arrival;
+  //   for(uint i = 1; i<=PDScount;i++){
+  //     if(compareStrings(PDSdatas[i].UIN, UIN)){
+  //       uins[i] = PDSdatas[i].UIN;
+  //       _types[i] = PDSdatas[i]._type;
+  //       qualities[i] = PDSdatas[i].quality;
+  //       weights[i] = PDSdatas[i].weight;
+  //       locations[i] = PDSdatas[i].location;
+  //       arrivals[i] = PDSdatas[i].arrival;
 
         
         
 
-      }
-      return (uins, _types, qualities, weights, locations, arrivals);
-    }
-  }
+  //     }
+  //     return (uins, _types, qualities, weights, locations, arrivals);
+  //   }
+  // }
 
   // function getUINsbykey() public {
   //   for(uint i=1;i<=PDScount;i++){

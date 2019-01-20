@@ -1,4 +1,5 @@
 $(function() {
+  $("#alert-error").hide();
   $.getJSON("PDS.json", function(pds) {
     Mycontract = TruffleContract(pds);
     Mycontract.setProvider(web3Provider);
@@ -43,6 +44,20 @@ web3.eth.getCoinbase(function(err, account) {
   });
 });
 
+function throwalert(string, string2) {
+  if (string2 == "success")
+    $("#alert")
+      .removeClass("alert-danger")
+      .addClass("alert-success")
+      .show();
+  else {
+    $("#alert")
+      .removeClass("alert-success")
+      .addClass("alert-danger")
+      .show();
+  }
+  $("#alert-text").text(string);
+}
 function addPDS() {
   uin = $("#f_aadhar").val();
   _type = $("#_type").val();
@@ -68,7 +83,18 @@ function addPDS() {
   });
 }
 
-function updateWarehouse() {
+function updateBlocks() {
+  Mycontract.deployed().then(async function(instance) {
+    var app = await instance;
+    app.PDScount.call().then(function(number) {
+      $("#number").text(
+        "There are " + number.toNumber() + " blocks in the blockchain"
+      );
+    });
+  });
+}
+
+async function updateWarehouse() {
   uin = $("#uin").val();
   q_aadhar = $("#q_aadhar").val();
   _type = $("#_type").val();
@@ -77,9 +103,32 @@ function updateWarehouse() {
   var date = new Date();
   var time = date.getTime();
   time.toString();
-  Mycontract.deployed().then(function(instance) {
-    instance.warehouseUpdate(uin, quality, weight, locationip, time, {
-      from: accountName
+  Mycontract.deployed().then(async function(instance) {
+    var app = await instance;
+    app.PDScount.call().then(async function(number) {
+      var flag = false;
+
+      no_of_blocks = number.toNumber();
+      for (i = 1; i <= no_of_blocks; i++) {
+        var pdsdata = await app.PDSdatas(i);
+        console.log(pdsdata);
+        if (pdsdata[2] === uin) {
+          flag = true;
+        }
+      }
+      console.log("outside for loop");
+      if (flag) {
+        instance.warehouseUpdate(uin, quality, weight, locationip, time, {
+          from: accountName
+        });
+        throwalert("Successfully updated", "success");
+      } else {
+        throwalert(
+          "Unique Identification Number does not exist. The process was NOT successful",
+          "danger"
+        );
+      }
+      updateBlocks();
     });
   });
 }
@@ -111,45 +160,20 @@ function pdsDisplay(pdsarray) {
 
 async function viewPDS() {
   uin = $("#uin").val();
-  Mycontract.deployed().then(function(instance) {
-    app = instance;
-    Mycontract.deployed().then(async function(instance) {
-      var app = await instance;
-      app.PDScount.call().then(
-        async function(number) {
-          var pdsarray = [];
-          no_of_blocks = number.toNumber();
-          for (i = 1; i <= no_of_blocks; i++) {
-            var pdsdata = await app.PDSdatas(i);
+  Mycontract.deployed().then(async function(instance) {
+    var app = await instance;
+    app.PDScount.call().then(async function(number) {
+      var pdsarray = [];
+      no_of_blocks = number.toNumber();
+      for (i = 1; i <= no_of_blocks; i++) {
+        var pdsdata = await app.PDSdatas(i);
 
-            if (pdsdata[2] === uin) {
-              pdsarray.push(pdsdata);
-            }
-          }
-          console.log(pdsarray);
-          pdsDisplay(pdsarray);
+        if (pdsdata[2] === uin) {
+          pdsarray.push(pdsdata);
         }
-        // $("#number").text(
-        //   "There are " +
-        //     toString(number.toNumber()) +
-        //     "blocks in the blockchain"
-      );
+      }
+
+      pdsDisplay(pdsarray);
     });
   });
-  // var bytes = []; // char codes
-  // var bytesv2 = []; // char codes
-
-  // for (var i = 0; i < str.length; ++i) {
-  //   var code = str.charCodeAt(i);
-
-  //   bytes = bytes.concat([code]);
-
-  //   bytesv2 = bytesv2.concat([code & 0xff, (code / 256) >>> 0]);
-  // }
 }
-
-// for (var i = 1; i <= number; i++) {
-//   instance.PDSdatas(i).then(function(pd) {
-//     console.log(pd);
-//   });
-// }

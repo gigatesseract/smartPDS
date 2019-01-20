@@ -1380,7 +1380,11 @@
     }
   },
   "schemaVersion": "3.0.1",
+<<<<<<< Updated upstream
   "updatedAt": "2019-01-20T00:12:05.870Z",
+=======
+  "updatedAt": "2019-01-20T00:06:30.669Z",
+>>>>>>> Stashed changes
   "devdoc": {
     "methods": {}
   },
