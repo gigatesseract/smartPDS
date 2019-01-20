@@ -1,3 +1,15 @@
+const accountSid = "AC7392b557767a822bd94472a2959f2f48";
+const authToken = "5999011fce7e0017251dff3f734e5421";
+const client = require("twilio")(accountSid, authToken);
+
+client.messages
+  .create({
+    body: "hello world",
+    from: "+14703308224",
+    to: "+919245887928"
+  })
+  .then(message => console.log(message.sid))
+  .done();
 if (typeof web3 !== "undefined") {
   // If a web3 instance is already provided by Meta Mask.
   web3Provider = web3.currentProvider;
