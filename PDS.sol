@@ -6,7 +6,7 @@ contract PDS{
 
 
   struct PDSdata{
-    uint id;
+    int id;
     bytes UIN;
     string _type;
     bytes quality;
@@ -19,7 +19,7 @@ contract PDS{
   mapping(uint => PDSdata) public tempPDSdatas;
 
   mapping(uint => PDSdata) public PDSdatas;
-  uint public PDScount;
+  int public PDScount;
 
   // mapping(bytes=>(mapping(uiint->PDSdata)public)) public PDSlist;
   uint public PDSlistcount; 
@@ -38,7 +38,7 @@ contract PDS{
 
 
   function  addPDS(string memory time, string memory _type,  string memory quality, string memory f_aadhar, string memory purist_aadhar, string memory weight, string memory location, string memory arrival) private {
-    PDScount++;
+    PDScount ++;
     bytes memory UIN = abi.encodePacked(time, convertingToString(f_aadhar));
     bytes memory qual = abi.encodePacked(quality, convertingToString(purist_aadhar));
     
@@ -63,7 +63,7 @@ contract PDS{
     string[] memory arrivals = new string[](PDScount);
 
   
-    for(uint i = 1; i<=PDScount;i++){
+    for(int i = 1; i<=PDScount;i++){
       if(keccak256(PDSdatas[i].UIN)==keccak256(UIN)){
         uins[i] = PDSdatas[i].UIN;
         _types[i] = PDSdatas[i]._type;
@@ -71,10 +71,6 @@ contract PDS{
         weights[i] = PDSdatas[i].weight;
         locations[i] = PDSdatas[i].location;
         arrivals[i] = PDSdatas[i].arrival;
-
-        
-        
-
       }
       return ("123");
     }
@@ -91,7 +87,7 @@ contract PDS{
 
 
   function warehouseUpdate(bytes memory UIN, bytes memory quality, string memory weight, string memory location, string memory arrival) private{
-    for(uint i = 1; i<=PDScount;i++){
+    for(int i = 1; i<=PDScount;i++){
       if(keccak256(PDSdatas[i].UIN)==keccak256(UIN)){
         PDScount++;
         
