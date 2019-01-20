@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>Smart and Secure PDS</title>
+      <link href="css/bootstrap.min.css" rel="stylesheet">
+   </head>
+   <body>
+      <div class="container" style="width: 650px;">
+         <div class="row">
+            <div class="col-lg-12">
+               <h1 class="text-center">Smart and Secure PDS</h1>
+               <hr/>
+               <br/>
+               <div id="content" style="display: block;">
+                  <hr/>
+                  <div id="consumer">
+                      <div class="form-group">
+                           <input type="text" name="mobile"  id="mobile" class="form-control" placeholder="Enter mobile number to be added">
+                           
+                        </div>
+                        <button type="submit" class="btn btn-primary" onclick="subscribe()">Add</button>
+                        <hr />
+                     
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/web3.min.js"></script>
+      <script src="js/truffle-contract.js"></script>
+      <script src="js/app.js"></script>
+      <script type="text/javascript">
+
+         function subscribe() {
+           var mobile = document.getElementById('mobile').value;
+
+            if (typeof(Storage) !== "undefined") {
+            var user = JSON.parse(localStorage.getItem('mobile'));
+            if(user==null)
+               user = {1:mobile};
+            else
+            {
+               count=Object.keys(user).length+1;
+               user[count] = mobile;
+            }
+
+            localStorage.setItem("mobile",JSON.stringify(user));
+    
+           }
+            else {
+          document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+         }
+
+         }
+         
+      </script>
+   </body>
+</html>
