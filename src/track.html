@@ -17,19 +17,12 @@
                <div id="content" style="display: block;">
                   <hr/>
                   <div id="consumer">
-                     <form onsubmit="return false">
+                     <form onsubmit="track()">
                         <div class="form-group">
-                           <label for="f_aadhar">Aadhar ID No.</label>
-                           <input type="number" name="f_aadhar"  id="UIN" class="form-control">
-                           <!--<label for="_type">Product Name</label>
-                           <input type="text" name="_type" id="_type" class="form-control">
-                           <label for="weight">Weight (in Kgs)</label>
-                           <input type="number" name="weight" class="form-control" id="weight" >
-                           <label for="quality">Quality</label>
-                           <input type="number" name="quality" id="quality" class="form-control">
-                        </div>-->
-                        <input type="submit" class="btn btn-primary" onclick="viewPDS()">
-                        <hr />
+                           <input type="text" name="UIN"  id="UIN" class="form-control" placeholder="Enter UIN of the product">
+                           
+                        </div>
+                        <button type="submit" class="btn btn-primary">Track</button>
                         <hr />
                      </form>
                   </div>
