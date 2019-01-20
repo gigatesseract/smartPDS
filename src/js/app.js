@@ -83,6 +83,7 @@ function updateWarehouse() {
     });
   });
 }
+table_string = "";
 function pdsDisplay(pdsarray) {
   if (pdsarray.length > 0) {
     table_string = "";
@@ -109,7 +110,7 @@ function pdsDisplay(pdsarray) {
 }
 
 async function viewPDS() {
-  uin = $("#UIN").val();
+  uin = $("#uin").val();
   Mycontract.deployed().then(function(instance) {
     app = instance;
     Mycontract.deployed().then(async function(instance) {
