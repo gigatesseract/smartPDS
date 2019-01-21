@@ -35,7 +35,7 @@
                   </div>
                   <div class="col-lg-7">
                     <input
-                      type="number"
+                      type="text"
                       name="f_aadhar"
                       id="uin"
                       class="form-control"
@@ -49,10 +49,11 @@
                   </div>
                   <div class="col-lg-7">
                     <input
-                      type="number"
+                      type="text"
                       name="q_aadhar"
                       id="q_aadhar"
                       class="form-control"
+                      data-mask = "0000 0000 0000"
                       required
                     /><br /><br />
                   </div>
@@ -60,13 +61,11 @@
                     <label for="_type">Product Name</label>
                   </div>
                   <div class="col-lg-7">
-                    <input
-                      type="text"
-                      name="_type"
-                      id="_type"
-                      class="form-control"
-                      required
-                    /><br /><br />
+                    <select class="form-control" id="_type" name="_type">
+                      <option>Rice</option>
+                      <option>Wheat</option>
+                      <option>Sugar</option>
+                    </select><br /><br />
                   </div>
                   <div class="col-lg-5">
                     <label for="weight">Weight (in Kgs)</label>

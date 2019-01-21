@@ -34,30 +34,6 @@
       <script src="js/web3.min.js"></script>
       <script src="js/truffle-contract.js"></script>
       <script src="js/app.js"></script>
-      <script type="text/javascript">
-
-         function subscribe() {
-           var mobile = document.getElementById('mobile').value;
-
-            if (typeof(Storage) !== "undefined") {
-            var user = JSON.parse(localStorage.getItem('mobile'));
-            if(user==null)
-               user = {1:mobile};
-            else
-            {
-               count=Object.keys(user).length+1;
-               user[count] = mobile;
-            }
-
-            localStorage.setItem("mobile",JSON.stringify(user));
-    
-           }
-            else {
-          document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
-         }
-
-         }
-         
-      </script>
+   
    </body>
 </html>

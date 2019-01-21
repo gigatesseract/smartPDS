@@ -36,7 +36,30 @@ $.getJSON("https://jsonip.com/?callback=?", data => {
   locationip = locationdata.ip;
   console.log(locationip);
 });
+function subscribe() {
 
+   var mobile = document.getElementById('mobile').value;
+
+    if (typeof(Storage) !== "undefined") {
+    throwalert("Number Added Succesfully","success");
+    var user = JSON.parse(localStorage.getItem('mobile'));
+    if(user==null)
+       user = {1:mobile};
+    else
+    {
+
+       count=Object.keys(user).length+1;
+       user[count] = mobile;
+    }
+
+    localStorage.setItem("mobile",JSON.stringify(user));
+
+   }
+    else {
+       throwalert("Number could not be added","danger");
+    }
+
+ }
 function throwalert(string, string2) {
   if (string2 == "success")
     $("#alert")
@@ -100,6 +123,7 @@ function updateBlocks() {
 async function updateWarehouse() {
   uin = $("#uin").val();
   q_aadhar = $("#q_aadhar").val();
+  q_aadhar = q_aadhar.replace(/\s/g, '');
   _type = $("#_type").val();
   weight = $("#weight").val();
   quality = $("#quality").val();
@@ -114,10 +138,14 @@ async function updateWarehouse() {
       no_of_blocks = number.toNumber();
       for (i = 1; i <= no_of_blocks; i++) {
         var pdsdata = await app.PDSdatas(i);
-        console.log(pdsdata);
-        if (pdsdata[2] === uin) {
-          flag = true;
-        }
+          pdsdata[1] = hex_to_ascii(pdsdata[1]);
+          pdsdata[3] = hex_to_ascii(pdsdata[3]);
+          var date = new Date(parseInt(pdsdata[6], 10)).toUTCString();
+          pdsdata[6] = date;
+          console.log(pdsdata[1]);
+          if (uin.localeCompare(pdsdata[1]) == 0) {
+            flag = true;
+          }
       }
       console.log("outside for loop");
       if (flag) {
