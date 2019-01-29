@@ -10,7 +10,7 @@ Coded in two days from scratch as part of Pragyan Hackathon 2019
 ## Built With :house:   
 * [Ganache](https://truffleframework.com/ganache) - For a personal Ethereum blockchain. 
 * [Truffle](https://truffleframework.com/) - A development framework for building dapps.
-* Solidity - For implementing smart contracts
+* Solidity - For implementing smart contracts.
 * Lots of :blue_heart: from Team Alpha :wolf::wolf::wolf:
 
 
@@ -31,4 +31,5 @@ Coded in two days from scratch as part of Pragyan Hackathon 2019
     * Once everything is set, you are good to go. Now go back to terminal. 
 1. `truffle migrate` (Use `truffle migrate --reset` if you want to overwrite build files)  *If metamask configuration was done right this will deduct fake ethereum from the account which you configured in the metamask, as this is where the contract is deployed in the blockchain*
 1. `npm run dev`
+
 
