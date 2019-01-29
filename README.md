@@ -5,7 +5,7 @@
 
 # smartPDS    
 Implementation of a decentralised public distribution system using blockchain.    
-Coded in two days from scratch as part of Pragyan Havkathon 2019
+Coded in two days from scratch as part of Pragyan Hackathon 2019
 
 ## Built With :house:   
 * [Ganache](https://truffleframework.com/ganache) - For a personal Ethereum blockchain. 
