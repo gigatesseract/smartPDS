@@ -12,7 +12,7 @@ Coded in two days from scratch as part of Pragyan Havkathon 2019
 
 
 ## Run :runner: :runner: :runner:    
-1. git clone https://github.com/gigatesseract/smartPDS.git`
+1. `git clone https://github.com/gigatesseract/smartPDS.git`
 1. cd `smartPDS`
 1. `npm install` (If npm command is not found, try `sudo apt install nodejs npm` and then `npm install`)
 1. Download ganache appImage [here](https://truffleframework.com/ganache) and run it.    
