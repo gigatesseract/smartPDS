@@ -1,7 +1,3 @@
-   
-<img src="https://www.freelogoservices.com/api/main/images/1j+ojl1KOMkX9WyofBe43D6ki...KDqRJMnhzIwXs1M3EMoAJtlSQlgfRu8f06" alt="alt text" width="350" height="225"/>    
-
-
 
 # smartPDS    
 Implementation of a decentralised public distribution system using blockchain.    
